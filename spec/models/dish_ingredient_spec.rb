@@ -1,6 +1,6 @@
 RSpec.describe DishIngredient do
   describe 'relationships' do
-    it { should belong_to :dishes }
-    it { should belong_to :ingredients }
+    it { should belong_to :dish }
+    it { should belong_to :ingredient }
   end
 end
