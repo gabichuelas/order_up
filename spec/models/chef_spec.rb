@@ -9,7 +9,7 @@ RSpec.describe Chef, type: :model do
   end
 
   describe "instance methods" do
-    it '#ingredients' do
+    before :each do
       @chef = Chef.create!(name: 'Robin')
       @tom_kha = @chef.dishes.create!(name: 'Tom Kha Gai', description: 'Spicy, thai coconut soup')
       @pudding = @chef.dishes.create!(name: 'Thai Pudding', description: 'Sweet, sticky rice with mango and coconut milk')
@@ -30,12 +30,16 @@ RSpec.describe Chef, type: :model do
       DishIngredient.create!(dish_id: @pudding.id, ingredient_id: @coconut_milk.id)
       DishIngredient.create!(dish_id: @pudding.id, ingredient_id: @rice.id)
       DishIngredient.create!(dish_id: @pudding.id, ingredient_id: @mango.id)
+    end
 
-      # @chef.ingredients
+    it '#ingredients' do
+      expect(@chef.ingredients).to eq([@coconut_milk, @lemongrass, @tofu, @chili, @mango, @rice])
 
-      expect(@chef.ingredients).to eq([@coconut_milk, @lemongrass, @tofu, @chili, @rice, @mango])
+      expect(@chef.ingredient_names).to eq(['Coconut Milk', 'Lemongrass', 'Tofu', 'Chili Pepper', 'Mango', 'Rice'])
+    end
 
-      expect(@chef.ingredient_names).to eq(['Coconut Milk', 'Lemongrass', 'Tofu', 'Chili Pepper', 'Rice', 'Mango'])
+    it '#popular_ingredients' do
+      expect(@chef.popular_ingredients).to eq([@coconut_milk], @tofu, @lemongrass])
     end
   end
 end

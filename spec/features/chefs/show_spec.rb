@@ -46,5 +46,22 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_content('Mango').once
       expect(page).to have_content('Rice').once
     end
+
+    it 'I see the three most popular ingredients that the chef uses in their dishes' do
+
+      @green_curry = @chef.dishes.create!(name: 'Green Curry', description: 'Spicy and fresh with eggplant and herbs')
+
+      DishIngredient.create!(dish_id: @green_curry.id, ingredient_id: @coconut_milk.id)
+      DishIngredient.create!(dish_id: @green_curry.id, ingredient_id: @tofu.id)
+      DishIngredient.create!(dish_id: @green_curry.id, ingredient_id: @lemongrass.id)
+
+      visit "/chefs/#{@chef.id}/ingredients"
+
+      within('.popular-ingredients') do
+        expect(page).to have_content('Coconut Milk')
+        expect(page).to have_content('Tofu')
+        expect(page).to have_content('Lemongrass')
+      end
+    end
   end
 end
