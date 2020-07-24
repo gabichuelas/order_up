@@ -18,12 +18,13 @@ RSpec.describe 'As a visitor' do
 
     it 'I see a list of ingredients for that dish and the chef\'s name' do
 
-      visit "/dishes/#{@dish.id}"
+      visit "/dishes/#{@tom_kha.id}"
 
       expect(page).to have_content('Lemongrass')
       expect(page).to have_content('Coconut Milk')
       expect(page).to have_content('Chili Pepper')
       expect(page).to have_content('Tofu')
+      expect(page).to have_content('Chef: Robin')
     end
   end
 end
