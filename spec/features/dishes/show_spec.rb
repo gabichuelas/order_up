@@ -10,10 +10,10 @@ RSpec.describe 'As a visitor' do
       @tofu = Ingredient.create!(name: 'Tofu', calories: 200)
       @chili = Ingredient.create!(name: 'Chili Pepper', calories: 5)
 
-      DishIngredients.create!(dish_id: @tom_kha.id, ingredient_id: @coconut_milk.id)
-      DishIngredients.create!(dish_id: @tom_kha.id, ingredient_id: @lemongrass.id)
-      DishIngredients.create!(dish_id: @tom_kha.id, ingredient_id: @tofu.id)
-      DishIngredients.create!(dish_id: @tom_kha.id, ingredient_id: @chili.id)
+      DishIngredient.create!(dish_id: @tom_kha.id, ingredient_id: @coconut_milk.id)
+      DishIngredient.create!(dish_id: @tom_kha.id, ingredient_id: @lemongrass.id)
+      DishIngredient.create!(dish_id: @tom_kha.id, ingredient_id: @tofu.id)
+      DishIngredient.create!(dish_id: @tom_kha.id, ingredient_id: @chili.id)
     end
 
     it 'I see a list of ingredients for that dish and the chef\'s name' do
