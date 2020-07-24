@@ -31,6 +31,8 @@ RSpec.describe Chef, type: :model do
       DishIngredient.create!(dish_id: @pudding.id, ingredient_id: @rice.id)
       DishIngredient.create!(dish_id: @pudding.id, ingredient_id: @mango.id)
 
+      expect(@chef.ingredient_names).to eq([@coconut_milk, @lemongrass, @tofu, @chili, @rice, @mango])
+
       expect(@chef.ingredient_names).to eq(['Coconut Milk', 'Lemongrass', 'Tofu', 'Chili', 'Rice', 'Mango'])
     end
   end
