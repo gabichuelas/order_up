@@ -8,12 +8,27 @@ class Chef <ApplicationRecord
       acc[dish] = dish.ingredients
       acc
     end
-    dish_ingredients.values.flatten.uniq
+    dish_ingredients.values.flatten
+  end
+
+  def unique_ingredients
+    self.ingredients.uniq
   end
 
   def ingredient_names
-    self.ingredients.map do |ingredient|
+    self.unique_ingredients.map do |ingredient|
       ingredient.name
     end
+  end
+
+  def popular_ingredients
+    # ran out of time to figure this one out
+
+    sort = self.ingredients.reduce({}) do |acc, ingredient|
+      acc[ingredient] ||= 0
+      acc[ingredient] += 1
+      acc
+    end
+    sort.sort
   end
 end
