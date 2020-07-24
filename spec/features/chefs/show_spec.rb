@@ -38,13 +38,13 @@ RSpec.describe 'As a visitor' do
       click_on 'See All Ingredients'
       expect(current_path).to eq("/chefs/#{@chef.id}/ingredients")
 
-      expect(page).to have_content('Lemongrass')
-      expect(page).to have_content('Coconut Milk')
-      expect(page).to have_content('Chili Pepper')
-      expect(page).to have_content('Tofu')
+      expect(page).to have_content('Lemongrass').once
+      expect(page).to have_content('Coconut Milk').once
+      expect(page).to have_content('Chili Pepper').once
+      expect(page).to have_content('Tofu').once
 
-      expect(page).to have_content('Mango')
-      expect(page).to have_content('Rice')
+      expect(page).to have_content('Mango').once
+      expect(page).to have_content('Rice').once
     end
   end
 end
