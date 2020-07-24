@@ -47,7 +47,7 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_content('Rice').once
     end
 
-    it 'I see the three most popular ingredients that the chef uses in their dishes' do
+    xit 'I see the three most popular ingredients that the chef uses in their dishes' do
 
       @green_curry = @chef.dishes.create!(name: 'Green Curry', description: 'Spicy and fresh with eggplant and herbs')
 
