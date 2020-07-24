@@ -20,7 +20,7 @@ RSpec.describe 'As a visitor' do
 
       visit "/chefs/#{@chef.id}"
 
-      expect(page).to have_content('Chef: Robin')
+      expect(page).to have_content('Robin')
     end
   end
 end
